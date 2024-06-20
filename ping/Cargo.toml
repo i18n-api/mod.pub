@@ -1,0 +1,16 @@
+[package]
+name = "ping"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+m = { path = "../../../rust/lib/m" }
+r = { path = "../../../rust/lib/r" }
+prost = "0.12.6"
+re = "0.1.6"
+t3 = "0.1.17"
+
+[build-dependencies]
+prost-build = "0.12.6"
+[package.metadata.cargo-machete]
+ignored = ["prost"]

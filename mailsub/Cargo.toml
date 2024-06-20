@@ -1,0 +1,22 @@
+[package]
+name = "mailsub"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+auth = { path="../auth" }
+bytes = "1.6.0"
+client = { path = "../../../rust/lib/client" }
+prost = "0.12.6"
+re = "0.1.6"
+t3 = "0.1.17"
+m = { path = "../../../rust/lib/m" }
+sonic-rs = "0.3.7"
+lang = "0.1.23"
+
+[build-dependencies]
+aok = "0.1.12"
+prost-build = "0.12.6"
+
+[package.metadata.cargo-machete]
+ignored = ["prost"]

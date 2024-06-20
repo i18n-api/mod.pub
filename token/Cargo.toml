@@ -1,0 +1,28 @@
+[package]
+name = "token"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+client = { path = "../../../rust/lib/client" }
+m = { path = "../../../rust/lib/m" }
+r = { path = "../../../rust/lib/r" }
+prost = "0.12.6"
+rand = "0.8.5"
+vb = "0.1.3"
+ub64 = "0.0.10"
+intbin = "0.1.2"
+sts = "0.1.23"
+jarg = "0.1.8"
+re = "0.1.6"
+t3 = "0.1.17"
+aok = "0.1.12"
+genv = "0.1.10"
+static_init = "1.0.3"
+
+# serde = { version = "1.0.193", features = ["derive"] }
+[build-dependencies]
+aok = "0.1.12"
+prost-build = "0.12.6"
+[package.metadata.cargo-machete]
+ignored = ["prost"]
