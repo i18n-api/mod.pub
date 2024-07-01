@@ -20,7 +20,7 @@ tracing = "0.1.40"
 xstr = "0.1.11"
 mysql_async = "0.34.1"
 static_init = "1.0.3"
-dashmap = "5.5.3"
+dashmap = "6.0.1"
 gcd = "2.3.0"
 async-stripe = { version = "0.37.1", features = ["runtime-tokio-hyper-rustls"] }
 

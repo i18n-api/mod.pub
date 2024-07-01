@@ -12,9 +12,9 @@ use client::Uid;
 pub async fn post(Uid(uid): Uid) -> re::msg!() {
   let mut conn = m::conn!();
 
-  let li: Vec<(u64, u64, u64, String, bool)> = m::q!(
+  let li: Vec<(u64, u64, String, bool)> = m::q!(
       &mut conn;
-      "SELECT id,sk,day,name,enable FROM token WHERE uid=? ORDER BY id DESC",
+      "SELECT id,ts,name,enable FROM token WHERE uid=? ORDER BY id DESC",
       uid,
   );
   if li.is_empty() {
@@ -25,9 +25,9 @@ pub async fn post(Uid(uid): Uid) -> re::msg!() {
   Ok(api::TokenLi {
     li: li
       .into_iter()
-      .map(|(id, sk, day, name, enable)| Token {
+      .map(|(id, ts, name, enable)| Token {
         id,
-        sk: db::sk::b64(id, sk, day),
+        sk: db::sk::b64(uid, id, ts),
         name,
         enable,
       })

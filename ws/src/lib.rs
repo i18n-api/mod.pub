@@ -6,7 +6,6 @@ use client::Client;
 use dashmap::DashMap;
 use futures::{future::join_all, stream::SplitSink};
 use futures_util::{SinkExt, StreamExt};
-use lazy_static::lazy_static;
 use r::{fred::interfaces::HashesInterface, R};
 use radix_str::radix_str;
 use t3::{
@@ -20,9 +19,8 @@ use xhash::HashMap;
 
 pub type Sender = SplitSink<WebSocket, Message>;
 
-lazy_static! {
-  pub static ref UID_CLIENT_ID_WS: DashMap<u64, HashMap<u64, Sender>> = DashMap::new();
-}
+#[static_init::dynamic]
+pub static UID_CLIENT_ID_WS: DashMap<u64, HashMap<u64, Sender>> = DashMap::new();
 
 pub static MSG_USER: &str = concat!(radix_str!(0, 36), "[");
 

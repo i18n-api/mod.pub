@@ -1,1 +1,1 @@
-pub const TOKEN: &[u8] = b"token";
+pub const TOKEN: &[u8] = uid_by_token::TOKEN;

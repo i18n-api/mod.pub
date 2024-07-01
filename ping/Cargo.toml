@@ -7,7 +7,7 @@ edition = "2021"
 m = { path = "../../../rust/lib/m" }
 r = { path = "../../../rust/lib/r" }
 prost = "0.12.6"
-re = "0.1.6"
+re = "0.1.7"
 t3 = "0.1.17"
 
 [build-dependencies]

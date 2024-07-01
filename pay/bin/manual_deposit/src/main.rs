@@ -26,10 +26,10 @@ async fn main() -> aok::Result<()> {
       );
       if amount != 0.0 {
         let cid = CID::TOPUP as u16;
-        let kid = KID::MANUAL as _;
+        let kid = KID::TOPUP::MANUAL as _;
         let rid = 0;
         let amount = (amount * (BASE as f64)) as u64;
-        let remain = pay::db::topup_cent(uid, cid, kid, rid, amount).await? / BASE;
+        let remain = pay::db::topup_cent(uid, cid, kid, rid, amount).await? as f64 / BASE;
         println!("当前余额 {}", remain);
       }
       return Ok(());

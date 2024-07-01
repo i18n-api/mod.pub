@@ -19,8 +19,7 @@ futures-util = { version = "0.3", default-features = false, features = [
   "std",
 ] }
 tracing = "0.1.40"
-lazy_static = "1.4.0"
-dashmap = { version = "5.5.3", features = ["inline", "rayon"] }
+dashmap = { version = "6.0.1", features = ["inline", "rayon"] }
 futures = "0.3.30"
 intbin = "0.1.2"
 user = { path = "../../../rust/lib/user" }
@@ -28,5 +27,6 @@ r = { path = "../../../rust/lib/r" }
 anyhow = "1.0.86"
 radix_str = "0.1.2"
 xhash = "0.1.24"
-re = "0.1.6"
+re = "0.1.7"
 t3 = "0.1.17"
+static_init = "1.0.3"

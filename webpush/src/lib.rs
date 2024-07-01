@@ -47,17 +47,22 @@ pub async fn post(
       let endpoint_host_id = if let Some(id) = HOST_ID.get(host) {
         *id
       } else {
-        let id: Option<u32> = m::q01!("SELECT id FROM webpushEndpointHost WHERE host=?", host);
-        let id = if let Some(id) = id {
-          id
-        } else {
-          m::q1!(
-            "INSERT INTO webpushEndpointHost(host)VALUES(?) RETURNING id",
-            host
-          )
-        };
-        HOST_ID.insert(host.into(), id);
-        id
+        let host_id;
+        loop {
+          let id: Option<u32> = m::q01!("SELECT id FROM webpushEndpointHost WHERE host=?", host);
+          host_id = if let Some(id) = id {
+            id
+          } else if let Some(last_id) =
+            m::last_id_or_none("INSERT INTO webpushEndpointHost(host)VALUES(?)", (host,)).await?
+          {
+            last_id as _
+          } else {
+            continue;
+          };
+          break;
+        }
+        HOST_ID.insert(host.into(), host_id);
+        host_id
       };
 
       m::e!("INSERT INTO webpush(id,hostId,endpointHostId,endpoint,auth,p256dh,lang)VALUES(?,?,?,?,?,?,?) ON DUPLICATE KEY UPDATE endpointHostId=VALUES(endpointHostId),endpoint=VALUES(endpoint),auth=VALUES(auth),p256dh=VALUES(p256dh),lang=VALUES(lang)", client.id, host_id,endpoint_host_id, endpoint, auth, p256dh, lang);

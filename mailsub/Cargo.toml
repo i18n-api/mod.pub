@@ -8,7 +8,7 @@ auth = { path="../auth" }
 bytes = "1.6.0"
 client = { path = "../../../rust/lib/client" }
 prost = "0.12.6"
-re = "0.1.6"
+re = "0.1.7"
 t3 = "0.1.17"
 m = { path = "../../../rust/lib/m" }
 sonic-rs = "0.3.7"

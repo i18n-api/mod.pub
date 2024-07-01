@@ -6,7 +6,7 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 [dependencies]
 aok = "0.1.12"
-clap = { version = "4.5.7", features = ["derive"] }
+clap = { version = "4.5.8", features = ["derive"] }
 m = { path = "../../../../../rust/lib/m" }
 tokio = { version = "1.38.0", features = [
   "macros",
